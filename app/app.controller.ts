@@ -2,13 +2,17 @@ import { Body, Controller, Get, Param, Post } from "velar";
 import AppService from "./app.service";
 import { LoginDto } from "./app.dto";
 
-@Controller("auth")
+@Controller("api")
 class AppController {
 	constructor(private readonly appService: AppService) {}
 
+	@Get("/ping")
+	ping() {
+		return this.appService.sayPong();
+	}
+
 	@Post("/login")
 	login(@Body() loginData: LoginDto) {
-		console.log({ loginData });
 		return this.appService.login(loginData);
 	}
 

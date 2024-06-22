@@ -5,6 +5,11 @@ import { UserRepository } from "./app.repository";
 @Injectable()
 class AppService {
 	constructor(private readonly userRepository: UserRepository) {}
+
+	async sayPong() {
+		return "pong";
+	}
+
 	async login({ username }: LoginDto) {
 		return `login successful for ${username}`;
 	}
